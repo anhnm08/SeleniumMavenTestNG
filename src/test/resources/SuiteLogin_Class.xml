@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Regression Test" verbose="1">
+    <test name="Login Test CRM">
+        <classes>
+            <class name="com.anhtester.Bai9_TestG_Framework.DemoTestNG" />
+            <class name="com.anhtester.Bai9_TestG_Framework.LoginTest1" />
+            //chạy nhiều class thì thêm nhiều class
+        </classes>
+    </test>
+</suite>

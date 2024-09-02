@@ -1,0 +1,24 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Regression Test" verbose="1">
+    <test name="Login Test CRM">
+
+        <packages>
+            <package name="com.anhtester.Bai9_TestG_Framework"/>
+        </packages>
+<!--       Khi chạy hỗn hợp, Package phải đặt lên đầu, trên thẻ class-->
+
+        <classes>
+             <class name="com.anhtester.Bai9_TestG_Framework.DemoTestNG">
+             <methods>
+<!--                 <include name ="testLoginCRM_success"/>-->
+
+                 <exclude name ="testLoginCRM_success"></exclude>
+             </methods>
+             </class>
+            <class name="com.anhtester.Bai9_TestG_Framework.LoginTest1"/>
+        </classes>
+        
+
+    </test>
+</suite>
