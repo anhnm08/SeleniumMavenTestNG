@@ -10,6 +10,11 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 
 public class BaseTest {
@@ -22,6 +27,34 @@ public class BaseTest {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void createScreenCapture(String imageName) {
+
+        Robot robot = null;
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            throw new RuntimeException(e);
+        }
+
+        //Get size screen browser - kích cỡ do Java lấy
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        System.out.println(screenSize);
+
+        //Khởi tạo kích thước khung hình với kích cỡ trên - Java
+        Rectangle screenRectangle = new Rectangle(screenSize);
+        //Tạo hình chụp với độ lớn khung đã tạo trên - Java
+        BufferedImage image = robot.createScreenCapture(screenRectangle);
+        //Lưu hình vào dạng file với dạng png - Java
+        File file = new File(imageName + ".png");
+        try {
+            ImageIO.write(image, "png", file);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        sleep(1);
     }
 
     @BeforeMethod
