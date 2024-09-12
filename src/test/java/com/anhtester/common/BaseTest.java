@@ -63,8 +63,8 @@ public class BaseTest {
         driver = new ChromeDriver();
 
         // 2 Hàm chờ đợi
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));  //Thời gian chờ đợi tối đa khi tìm kiếm elemnet
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20)); //Chờ đợi page load xong
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(180));  //Thời gian chờ đợi tối đa khi tìm kiếm elemnet
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(180)); //Chờ đợi page load xong
 
         // 2 Hàm để maximize/ minimize cửa sở trình duyệt
         driver.manage().window().maximize();
