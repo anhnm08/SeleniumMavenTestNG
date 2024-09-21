@@ -1,5 +1,6 @@
 package com.anhtester.common;
 
+import com.anhtester.keywords.WebUI;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -63,11 +64,14 @@ public class BaseTest {
         driver = new ChromeDriver();
 
         // 2 Hàm chờ đợi
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(180));  //Thời gian chờ đợi tối đa khi tìm kiếm elemnet
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(180));  //Thời gian chờ đợi tối đa khi tìm kiếm elemnet // cmt ở Bai 16
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(180)); //Chờ đợi page load xong
 
         // 2 Hàm để maximize/ minimize cửa sở trình duyệt
         driver.manage().window().maximize();
+
+        //Bai 16: Khai báo class WebUI để khởi tạo giá trị driver cho class WebUI
+        new WebUI(driver);
     }
 
     public void createBrowser(String browserName){
@@ -96,13 +100,14 @@ public class BaseTest {
 
     @AfterMethod
     public void closeBrowser(){
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
-        //Thay vì add exception, dùng try/catch để chỉ cần 1 lần
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//        //Thay vì add exception, dùng try/catch để chỉ cần 1 lần
+        //Cmt ở Bai 16
         //Đóng Browser
         driver.quit();
     }
