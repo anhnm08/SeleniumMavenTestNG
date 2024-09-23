@@ -87,32 +87,39 @@ public class AddNewCustomer extends BaseTest {
     @Test
     public void testAddContactForCustomer(){
         openCustomerPage();
-        driver.findElement(By.xpath(LocatorsCRM.inputSearchContacts)).sendKeys(companyName);
+
+        WebUI.setText(LocatorsCRM.inputSearchContacts, companyName);
         sleep(1);
 
         Assert.assertTrue(driver.findElement(By.xpath(LocatorsCRM.firstItemCustomerOnTable)).isDisplayed());
         Assert.assertEquals(driver.findElement(By.xpath(LocatorsCRM.firstItemCustomerOnTable)).getText(), companyName);
-        sleep(1);
-        driver.findElement(By.xpath(LocatorsCRM.firstItemCustomerOnTable)).click();
-        driver.findElement(By.xpath(LocatorsCRM.menuContacts)).click();
 
-        sleep(1);
+        WebUI.clickElement(LocatorsCRM.firstItemCustomerOnTable);
+        WebUI.clickElement(LocatorsCRM.menuContacts);
+
         Assert.assertTrue(driver.findElement(By.xpath(LocatorsCRM.headerContactPage)).isDisplayed());
         Assert.assertEquals(driver.findElement(By.xpath(LocatorsCRM.headerContactPage)).getText(), "Contacts");
 
-        driver.findElement(By.xpath(LocatorsCRM.buttonAddNewContact)).click();
+        WebUI.clickElement(LocatorsCRM.buttonAddNewContact);
         sleep(1);
         Assert.assertTrue(driver.findElement(By.xpath(LocatorsCRM.headerAddNewContactDialog)).isDisplayed());
         Assert.assertEquals(driver.findElement(By.xpath(LocatorsCRM.headerAddNewContactDialog)).getText(), "Add new contact");
 
         //Upload file at Profile Contact
-        driver.findElement(By.xpath(LocatorsCRM.inputProfileImage)).sendKeys(System.getProperty("user.dir"),"//src/test/resources/dataTest/IMG_3129.JPG" );
-        //Resources> New Directory> DataTest> Past ảnh vào> Copy đường dẫn của ảnh - lấy cái có thư mục src và chuyển dấu / thành \\ (đối với window thôi)
-        sleep(1);
+        String filePath = System.getProperty("user.dir") + "//src/test/resources/dataTest/IMG_3129.JPG";
+        WebUI.setText(LocatorsCRM.inputProfileImage, filePath);
+        WebUI.clickElement(LocatorsCRM.iconGenPassword);
+        WebUI.clickElement(LocatorsCRM.iconShowPassword);
 
-        driver.findElement(By.xpath(LocatorsCRM.iconGenPassword)).click();
-        driver.findElement(By.xpath(LocatorsCRM.iconShowPassword)).click();
-        sleep(1);
+
+
+        //driver.findElement(By.xpath(LocatorsCRM.inputProfileImage)).sendKeys(System.getProperty("user.dir"),"//src/test/resources/dataTest/IMG_3129.JPG" );
+        //Resources> New Directory> DataTest> Past ảnh vào> Copy đường dẫn của ảnh - lấy cái có thư mục src và chuyển dấu / thành \\ (đối với window thôi)
+//        sleep(1);
+
+//        driver.findElement(By.xpath(LocatorsCRM.iconGenPassword)).click();
+//        driver.findElement(By.xpath(LocatorsCRM.iconShowPassword)).click();
+//        sleep(1);
         String passValue = driver.findElement(By.xpath(LocatorsCRM.inputPasswordContact)).getAttribute("value");
         System.out.println(passValue);
     }
