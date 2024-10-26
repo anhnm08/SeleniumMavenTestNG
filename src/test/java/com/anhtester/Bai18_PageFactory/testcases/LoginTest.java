@@ -1,6 +1,6 @@
-package com.anhtester.Bai17_PageObjectModel.testcases;
+package com.anhtester.Bai18_PageFactory.testcases;
 
-import com.anhtester.Bai17_PageObjectModel.pages.LoginPage;
+import com.anhtester.Bai18_PageFactory.pages.LoginPage;
 import com.anhtester.common.BaseTest;
 import org.testng.annotations.Test;
 
@@ -20,6 +20,7 @@ public class LoginTest extends BaseTest {
         //Sau đó lấy đối tượng class chấm gọi các thành phần trong class Page
         loginPage.loginCRM("admin@example.com","123456");
         loginPage.verifyLoginSuccess();
+        loginPage.getListMenu();
     }
 
     @Test

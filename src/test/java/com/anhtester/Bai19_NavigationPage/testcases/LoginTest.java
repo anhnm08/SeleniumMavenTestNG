@@ -1,6 +1,6 @@
-package com.anhtester.Bai17_PageObjectModel.testcases;
+package com.anhtester.Bai19_NavigationPage.testcases;
 
-import com.anhtester.Bai17_PageObjectModel.pages.LoginPage;
+import com.anhtester.Bai19_NavigationPage.pages.LoginPage;
 import com.anhtester.common.BaseTest;
 import org.testng.annotations.Test;
 
