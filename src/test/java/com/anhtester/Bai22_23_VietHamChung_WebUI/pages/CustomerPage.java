@@ -1,4 +1,4 @@
-package com.anhtester.Bai20_21_ThucHanh_POM.pages;
+package com.anhtester.Bai22_23_VietHamChung_WebUI.pages;
 
 import com.anhtester.keywords.WebUI;
 import org.openqa.selenium.By;
@@ -58,7 +58,11 @@ public class CustomerPage {
 
     public void verifyRedirectCustomerPageSuccess(){
         Assert.assertTrue(driver.findElement(headerCustomerPage).isDisplayed(),"Không tìm thấy Customer Header Page");
-        Assert.assertEquals(driver.findElement(headerCustomerPage).getText(), "Customers Summary", "Giá trị Customer Header Page không đúng");
+//        Assert.assertEquals(driver.findElement(headerCustomerPage).getText(), "Customers Summary", "Giá trị Customer Header Page không đúng");
+
+        //Update code buoi46
+        Assert.assertEquals(WebUI.getElementText(headerCustomerPage), "Customers Summary", "Giá trị Customer Header Page không đúng");
+        WebUI.assertContains(WebUI.getElementText(headerCustomerPage), "Customers Summary");
     }
 
     public void inputDataCustomer(String companyName){
@@ -69,7 +73,8 @@ public class CustomerPage {
         WebUI.clickElement(dropdownGroups);
         WebUI.setText(inputSearchGroup, "Sale");
         WebUI.sleep(1); //Với những dropdown cần có sleep 1s để đợi bật dropdown lên
-        driver.findElement(inputSearchGroup).sendKeys(Keys.ENTER);
+        //driver.findElement(inputSearchGroup).sendKeys(Keys.ENTER);
+        WebUI.setKey(inputSearchGroup, Keys.ENTER);
         WebUI.clickElement(dropdownGroups); // Tắt dropdown
         WebUI.setText(textareaAddress, "Hà Nội");
         WebUI.setText(inputCity, "Hà Nội");
@@ -78,7 +83,8 @@ public class CustomerPage {
         WebUI.clickElement(dropdownCountry);
         WebUI.setText(inputSearchCountry, "Vietnam");
         WebUI.sleep(1);
-        driver.findElement(inputSearchGroup).sendKeys(Keys.ENTER);
+        //driver.findElement(inputSearchCountry).sendKeys(Keys.ENTER);
+        WebUI.setKey(inputSearchCountry, Keys.ENTER);
         WebUI.clickElement(buttonSaveCustomer);
     }
 

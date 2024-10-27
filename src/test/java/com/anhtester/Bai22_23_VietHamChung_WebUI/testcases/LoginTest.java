@@ -1,6 +1,6 @@
-package com.anhtester.Bai20_21_ThucHanh_POM.testcases;
+package com.anhtester.Bai22_23_VietHamChung_WebUI.testcases;
 
-import com.anhtester.Bai20_21_ThucHanh_POM.pages.LoginPage;
+import com.anhtester.Bai22_23_VietHamChung_WebUI.pages.LoginPage;
 import com.anhtester.common.BaseTest;
 import org.testng.annotations.Test;
 
