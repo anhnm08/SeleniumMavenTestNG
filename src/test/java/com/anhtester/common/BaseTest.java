@@ -6,10 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -59,22 +56,28 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    public void createBrowser(){
-        //Khởi tạo Browser
-        driver = new ChromeDriver();
+    @Parameters({"browser"})
 
-        // 2 Hàm chờ đợi
-//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(180));  //Thời gian chờ đợi tối đa khi tìm kiếm elemnet // cmt ở Bai 16
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(180)); //Chờ đợi page load xong
-
-        // 2 Hàm để maximize/ minimize cửa sở trình duyệt
-        driver.manage().window().maximize();
+    public void createBrowser(String browserName){
+//        //Khởi tạo Browser
+//        driver = new ChromeDriver();
+//
+//        // 2 Hàm chờ đợi
+////        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(180));  //Thời gian chờ đợi tối đa khi tìm kiếm elemnet // cmt ở Bai 16
+//        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(180)); //Chờ đợi page load xong
+//
+//        // 2 Hàm để maximize/ minimize cửa sở trình duyệt
+//        driver.manage().window().maximize();
+//
+        setBrowser(browserName);
 
         //Bai 16: Khai báo class WebUI để khởi tạo giá trị driver cho class WebUI
         new WebUI(driver);
     }
 
-    public void createBrowser(String browserName){
+//cmt toàn bộ ở buổi 47_Bài 24
+
+    public void setBrowser(String browserName){
         //Khởi tạo Browser
         if(browserName.trim().toLowerCase().equals("chrome")){
             driver = new ChromeDriver();
@@ -97,6 +100,7 @@ public class BaseTest {
         // 2 Hàm để maximize/ minimize cửa sở trình duyệt
         driver.manage().window().maximize();
     }
+
 
     @AfterMethod
     public void closeBrowser(){
